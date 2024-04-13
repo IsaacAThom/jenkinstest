@@ -10,33 +10,40 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Fetch the source code from source directory: ${DIRECTORY_PATH}"
-                echo 'Compile the code and generate any necessary artifacts'
+                echo 'Compile the code and generate any necessary artifacts using {insert build automation tool here}'
             }
         }
-        stage('Test') {
+        stage('Unit and Integration Tests') {
             steps {
-                echo 'Unit Tests'
-                echo 'Integration Tests'
+                echo 'Test application using {insert test automation tool here}'
+                emailext body: 'Test Message',
+                    subject: 'Test Subject',
+                    to: 'nmckissack@deakin.edu.au'
             }
         }
-        stage('Code Quality Check') {
+        stage('Code Analysis') {
             steps {
-                echo 'Check the quality of the code'
+                echo 'Analyse code to ensure it meeds standards using {insert code analysis tool here}'
             }
         }
-        stage('Deploy') {
+        stage('Security Scan') {
             steps {
-                echo "Deploy the application to testing environment: ${TESTING_ENVIRONMENT}"
+                echo 'Perform a security scan using {insert security tool here}'
             }
         }
-        stage('Approval') {
+        stage('Deploy to Staging') {
             steps {
-                sleep 10
+                echo 'Deploy to staging server hosted on {insert staging server host}'
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps {
+                echo 'Run integration tests on the staging server'
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo "Deploy the application to production environment: ${PRODUCTION_ENVIRONMENT}"
+                echo 'Deploy to production server'
             }
         }
     }
