@@ -18,7 +18,7 @@ pipeline {
                 echo 'Test application using {insert test automation tool here}'
                 emailext body: 'Test Message',
                     subject: 'Test Subject',
-                    to: 'nmckissack@deakin.edu.au'
+                    to: 'isaac.an.thompson@gmail.com'
             }
         }
         stage('Code Analysis') {
@@ -45,11 +45,6 @@ pipeline {
             steps {
                 echo 'Deploy to production server'
             }
-        }
-    }
-    post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
     }
 }
