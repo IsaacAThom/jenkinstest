@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Test application using {insert test automation tool here}'
                 emailext body: 'Test Message',
-                    from: 'isaac.an.thompson@gmail.com'
+                    from: 'isaac.an.thompson@gmail.com',
                     subject: 'Test Subject',
                     to: 'isaac.an.thompson@gmail.com'
             }
