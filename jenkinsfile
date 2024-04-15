@@ -9,23 +9,25 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building..."
-            }
-            post{
-                success{
-                    mail to: "isaac.an.thompson@gmail.com",
-                    subject: "Build Status Email",
-                    body: "Build was successful"
-                }
+                echo "Fetch the source code from source directory: ${DIRECTORY_PATH}"
+                echo 'Compile the code and generate any necessary artifacts using {insert build automation tool here}'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
                 echo 'Test application using {insert test automation tool here}'
-                emailext body: 'Test Message',
-                    from: 'isaac.an.thompson@gmail.com',
-                    subject: 'Test Subject 2',
-                    to: 'isaac.an.thompson@gmail.com'
+            }
+            post{
+                success{
+                    mail to: 'isaac.an.thompson@gmail.com',
+                    subject: 'Unit and Integration Test Status',
+                    body: 'Unit and Integration testing was a success'
+                }
+                failure{
+                    mail to: 'isaac.an.thompson@gmail.com',
+                    subject: 'Unit and Integration Test Status',
+                    body: 'Unit and Integrating testing was a failure'
+                }
             }
         }
         stage('Code Analysis') {
@@ -37,6 +39,18 @@ pipeline {
             steps {
                 echo 'Perform a security scan using {insert security tool here}'
             }
+            post{
+                success{
+                    mail to: 'isaac.an.thompson@gmail.com',
+                    subject: 'Security Scan Status',
+                    body: 'Security scanning was a success'
+                }
+                failure{
+                    mail to: 'isaac.an.thompson@gmail.com',
+                    subject: 'Security Scan Status',
+                    body: 'Security scanning was a failure'
+                }
+            } 
         }
         stage('Deploy to Staging') {
             steps {
@@ -46,6 +60,18 @@ pipeline {
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Run integration tests on the staging server'
+            }
+            post{
+                success{
+                    mail to: 'isaac.an.thompson@gmail.com',
+                    subject: 'Integration Tests on Staging Status',
+                    body: 'Integration tests on staging were a success'
+                }
+                failure{
+                    mail to: 'isaac.an.thompson@gmail.com',
+                    subject: 'Integration Tests on Staging Status',
+                    body: 'Integrating tests on staging was a failure'
+                }
             }
         }
         stage('Deploy to Production') {
