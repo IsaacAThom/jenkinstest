@@ -9,8 +9,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Fetch the source code from source directory: ${DIRECTORY_PATH}"
-                echo 'Compile the code and generate any necessary artifacts using {insert build automation tool here}'
+                echo "Building..."
+            }
+            post{
+                success{
+                    mail to: "isaac.an.thompson@gmail.com",
+                    subject: "Build Status Email",
+                    body: "Build was successful"
+                }
             }
         }
         stage('Unit and Integration Tests') {
@@ -20,13 +26,6 @@ pipeline {
                     from: 'isaac.an.thompson@gmail.com',
                     subject: 'Test Subject 2',
                     to: 'isaac.an.thompson@gmail.com'
-            }
-            post {
-                success {
-                    mail to: "isaac.an.thompson@gmail.com"
-                    subject: "test subject"
-                    body: "build success :)"
-                }
             }
         }
         stage('Code Analysis') {
