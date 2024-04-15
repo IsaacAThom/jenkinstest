@@ -22,7 +22,7 @@ pipeline {
                     to: 'isaac.an.thompson@gmail.com'
             }
             post {
-                mail to: isaac.an.thompson@gmail.com
+                mail to: "isaac.an.thompson@gmail.com"
                 subject: "test subject"
                 body: "build success :)"
             }
