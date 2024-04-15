@@ -18,7 +18,7 @@ pipeline {
                 echo 'Test application using {insert test automation tool here}'
                 emailext body: 'Test Message',
                     from: 'isaac.an.thompson@gmail.com',
-                    subject: 'Test Subject',
+                    subject: 'Test Subject 2',
                     to: 'isaac.an.thompson@gmail.com'
             }
         }
