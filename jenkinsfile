@@ -1,21 +1,16 @@
 pipeline {
     agent any
-    environment {
-        DIRECTORY_PATH = 'C:/Users/incar/Documents/University/2024/SIT223 - Professional Practice/Code'
-        TESTING_ENVIRONMENT = 'C:/Users/incar/AppData/Local/Jenkins/.jenkins/workspace/my_first_pipeline'
-        PRODUCTION_ENVIRONMENT = 'Isaac McKissack'
-    }
 
     stages {
         stage('Build') {
             steps {
-                echo "Fetch the source code from source directory: ${DIRECTORY_PATH}"
-                echo 'Compile the code and generate any necessary artifacts using {insert build automation tool here}'
+                echo 'Compile the code and generate any necessary artifacts using Apache Maven'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Test application using {insert test automation tool here}'
+                echo 'Test discrete components of the application using JUnit'
+                echo 'Test how different components interact using Citrus'
             }
             post{
                 success{
@@ -32,12 +27,12 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'Analyse code to ensure it meeds standards using {insert code analysis tool here}'
+                echo 'Analyse code to ensure it meeds standards using Code Climate Quality'
             }
         }
         stage('Security Scan') {
             steps {
-                echo 'Perform a security scan using {insert security tool here}'
+                echo 'Perform a security scan using Bearer CLI'
             }
             post{
                 success{
@@ -54,7 +49,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploy to staging server hosted on {insert staging server host}'
+                echo 'Deploy to staging server hosted on Amazon Elastic Compute Cloud'
             }
         }
         stage('Integration Tests on Staging') {
@@ -76,7 +71,7 @@ pipeline {
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Deploy to production server'
+                echo 'Deploy to production server hosted on Amazon Elastic Compute Cloud'
             }
         }
     }
