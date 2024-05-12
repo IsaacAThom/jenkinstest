@@ -23,6 +23,7 @@ pipeline {
                     mail to: 'isaac.an.thompson@gmail.com',
                     subject: 'Unit and Integration Test Status',
                     body: 'Unit and Integrating testing was a failure'
+                    attachLog: true
                 }
             }
         }
