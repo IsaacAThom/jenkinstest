@@ -22,9 +22,12 @@ pipeline {
                     )
                 }
                 failure{
-                    mail to: 'isaac.an.thompson@gmail.com',
-                    subject: 'Unit and Integration Test Status',
-                    body: 'Unit and Integrating testing was a failure'
+                    emailext(
+                        to: 'isaac.an.thompson@gmail.com',
+                        subject: 'Unit and Integration Test Status',
+                        body: 'Unit and Integration testing was a failure',
+                        attachLog: true
+                    )
                 }
             }
         }
@@ -39,14 +42,20 @@ pipeline {
             }
             post{
                 success{
-                    mail to: 'isaac.an.thompson@gmail.com',
-                    subject: 'Security Scan Status',
-                    body: 'Security scanning was a success'
+                    emailext(
+                        to: 'isaac.an.thompson@gmail.com',
+                        subject: 'Security Scan Status',
+                        body: 'Security scanning was a success',
+                        attachLog: true
+                    )
                 }
                 failure{
-                    mail to: 'isaac.an.thompson@gmail.com',
-                    subject: 'Security Scan Status',
-                    body: 'Security scanning was a failure'
+                    emailext(
+                        to: 'isaac.an.thompson@gmail.com',
+                        subject: 'Security Scan Status',
+                        body: 'Security scanning was a failure',
+                        attachLog: true
+                    )
                 }
             } 
         }
@@ -61,14 +70,20 @@ pipeline {
             }
             post{
                 success{
-                    mail to: 'isaac.an.thompson@gmail.com',
-                    subject: 'Integration Tests on Staging Status',
-                    body: 'Integration tests on staging were a success'
+                    emailext(
+                        to: 'isaac.an.thompson@gmail.com',
+                        subject: 'Integration Tests on Staging Status',
+                        body: 'Integrating tests on staging was a success',
+                        attachLog: true
+                    )
                 }
                 failure{
-                    mail to: 'isaac.an.thompson@gmail.com',
-                    subject: 'Integration Tests on Staging Status',
-                    body: 'Integrating tests on staging was a failure'
+                    emailext(
+                        to: 'isaac.an.thompson@gmail.com',
+                        subject: 'Integration Tests on Staging Status',
+                        body: 'Integrating tests on staging was a failure',
+                        attachLog: true
+                    )
                 }
             }
         }
