@@ -17,6 +17,7 @@ pipeline {
                     mail to: 'isaac.an.thompson@gmail.com',
                     subject: 'Unit and Integration Test Status',
                     body: 'Unit and Integration testing was a success'
+                    attachLog: true
                 }
                 failure{
                     mail to: 'isaac.an.thompson@gmail.com',
