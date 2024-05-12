@@ -14,7 +14,7 @@ pipeline {
             }
             post{
                 success{
-                    emailext (
+                    emailext(
                         to: 'isaac.an.thompson@gmail.com',
                         subject: 'Unit and Integration Test Status',
                         body: 'Unit and Integration testing was a success',
@@ -41,7 +41,7 @@ pipeline {
                 success{
                     mail to: 'isaac.an.thompson@gmail.com',
                     subject: 'Security Scan Status',
-                    body: 'Security scanning was a success ${BUILD_LOG, maxLines=9999, escapeHtml=false}'
+                    body: 'Security scanning was a success'
                 }
                 failure{
                     mail to: 'isaac.an.thompson@gmail.com',
